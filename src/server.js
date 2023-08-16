@@ -17,7 +17,9 @@ app.post("/webhook", (req, res) => {
   console.log("Recebido um webhook:", req.body);
 
   // Responda ao webhook
-  res.status(200).send("Webhook recebido com sucesso!");
+  res.status(200).json({
+    message: "Success",
+  });
 });
 
 app.listen(PORT, () => {
