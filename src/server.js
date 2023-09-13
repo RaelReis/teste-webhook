@@ -14,6 +14,7 @@ app.get("/", (req, res) => {
 });
 
 app.post("/webhook", (req, res) => {
+  console.log('BOOOOOOODY => ',req.body)
   try {
     // Os dados em formato de string estarão disponíveis em req.body
     const dataString = req.body;
@@ -26,7 +27,9 @@ app.post("/webhook", (req, res) => {
     res.status(200).json({ message: "Dados recebidos com sucesso!" });
   } catch (error) {
     console.error("Erro ao processar os dados:", error);
-    res.status(400).json({ message: "Erro ao processar os dados", error });
+    res
+      .status(400)
+      .json({ message: "Erro ao processar os dados", error: error.message });
   }
 });
 
